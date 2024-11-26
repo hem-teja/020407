@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dictionary Interaction</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f9f9f9;
+        }
+        h1 {
+            color: #333;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+            padding: 20px;
+            background: #fff;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+        input, button {
+            padding: 10px;
+            margin: 5px 0;
+            width: 100%;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .result {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #f1f1f1;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Dictionary Interaction</h1>
+        <p>Enter a key to search in the dictionary:</p>
+        <input type="text" id="userKey" placeholder="Enter a key (e.g., 24)">
+        <button onclick="getValue()">Submit</button>
+        <div class="result" id="result">Result will appear here.</div>
+    </div>
+
+    <script>
+        const dictionary = {
+            18: 'Big', 15: 'small', 52: 'small', 45: 'small', 18: 'big', 58: 'big', 32: 'big',
+            97: 'big-low', 70: 'big', 60: 'small', 30: 'small', 61: 'small', 20: 'big',
+            44: 'small', 41: 'small', 94: 'big', 29: 'small', 63: 'small', 13: 'big',
+            83: 'big-low', 98: 'big', 37: 'big', 19: 'big', 21: 'small', 42: 'small',
+            92: 'big', 43: 'big', 98: 'big', '04': 'small', 30: 'big', 69: 'big',
+            12: 'big-high', 17: 'small', 86: 'big', 88: 'small', 87: 'skip', 57: 'big',
+            90: 'big', 23: 'small', 22: 'small', 20: 'small', 93: 'skip', 47: 'big',
+            82: 'small', 99: 'green', 80: 'small', 66: 'green', 95: 'big', '05': 'small',
+            84: 'small', 66: 'small', 76: 'small', 26: 'big', 80: 'small', '07': 'big-low',
+            66: 'red', 70: 'big'
+        };
+
+        const store = {};
+        for (const key in dictionary) {
+            store[String(key)] = dictionary[key];
+        }
+
+        function getValue() {
+            const userKey = document.getElementById("userKey").value;
+            const resultDiv = document.getElementById("result");
+
+            if (userKey in store) {
+                resultDiv.textContent = `Value: ${store[userKey]}`;
+            } else {
+                resultDiv.textContent = "SKIP";
+            }
+        }
+    </script>
+</body>
+</html>
